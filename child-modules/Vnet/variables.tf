@@ -1,4 +1,4 @@
-# Define the variables needed to create resource group
+# Define the variables needed to create vnet
 variable "vnet-name" {
   type        = string
   description = "name of the vnet"
