@@ -23,3 +23,7 @@ output "subnet-2-name" {
 output "subnet-2-id" {
   value = azurerm_subnet.subnet-2.id
 }
+
+output "nic-id" {
+  value = azurerm_network_interface.nic.id
+}

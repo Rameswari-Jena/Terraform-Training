@@ -21,6 +21,18 @@ resource "azurerm_virtual_network" "vnet" {
     }
 }
 
+resource "azurerm_network_interface" "nic" {
+  name                = "${var.vnet-name}-nic"
+  location            = var.location
+  resource_group_name = data.terraform_remote_state.resource-group.outputs.rg.rg_name
+
+  ip_configuration {
+    name                          = "testconfiguration1"
+    subnet_id                     = azurerm_subnet.subnet-1.id
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
 resource "azurerm_subnet" "subnet-1" {
     name                 = var.subnet-1-name
     resource_group_name  = data.terraform_remote_state.resource-group.outputs.rg.rg_name
